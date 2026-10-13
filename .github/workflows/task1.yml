@@ -4,11 +4,21 @@ on:
   push:
     branches:
       - master
+      - main
 
 jobs:
-  hello-world:
+  first-job:
     runs-on: ubuntu-latest
-
     steps:
       - name: Print Hello World
         run: echo "Hello World!"
+
+      - name: Print Another Hello World
+        run: echo "Hello World!"
+
+  second-job:
+    needs: first-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Success
+        run: echo "First Job was Successful!"
